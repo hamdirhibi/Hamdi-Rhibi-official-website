@@ -11,7 +11,7 @@
       require_once 'vendor/autoload.php' ; 
 
 
-      $transport = (new Swift_SmtpTransport('smtp.gmail.com',465,'tls'))
+      $transport = (new Swift_SmtpTransport('smtp.gmail.com',587,'tls'))
        ->setUsername('codeinthedarktunisia@gmail.com')
        ->setPassword('codeinthedark'); 
 
@@ -77,11 +77,7 @@
             else
             {	          
     
-            echo "<script type='text/javascript'>
-               alert('Votre email a été envoyer avec succès'); 
-           </script>";  
-            echo "<h2 style='color : green ; border-width:0px'>Votre Email a été envoyer avec Succés </h2>";  
-            header('/success.html');
+                header('location: success.html');            
             }
    
 ?>
