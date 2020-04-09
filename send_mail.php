@@ -81,7 +81,7 @@
                alert('Votre email a été envoyer avec succès'); 
            </script>";  
             echo "<h2 style='color : green ; border-width:0px'>Votre Email a été envoyer avec Succés </h2>";  
-            header('location: https://localhost/me/success.html');
+            header('/success.html');
             }
    
 ?>
