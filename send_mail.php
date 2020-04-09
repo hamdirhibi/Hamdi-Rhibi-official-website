@@ -11,7 +11,7 @@
       require_once 'vendor/autoload.php' ; 
 
 
-      $transport = (new Swift_SmtpTransport('smtp.gmail.com',587,'tls'))
+      $transport = (new Swift_SmtpTransport('smtp.gmail.com',465,'tls'))
        ->setUsername('codeinthedarktunisia@gmail.com')
        ->setPassword('codeinthedark'); 
 
