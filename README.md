@@ -11,7 +11,7 @@
 
 
 <div align="center">
-<img src="./assets/images/login.png"  />
+<img src="./assets/images/home.png"  />
 
 </div>
 
@@ -39,83 +39,166 @@
 
 # 📖 Run The Project
 
-- First of all clone the project : git clone https://github.com/hamdirhibi/Hamdi-Rhibi-official-website.git
+- First Step clone the project : git clone https://github.com/hamdirhibi/cv.git
 
-- cd Hamdi-Rhibi-official-website
+- cd cv
 
-- You have three options to run this project 
+- You have two option to run it locally  
 
-First Option (without docker): 
+- NOTE : you have to fill the config/credential.php with your mail account (in order to sent and receive mails )
 
-- executing the PHP project locally by copying the project folder in /var/html if you are using Linux or passing it within wamp if you are using windows ..
+# First Option (without docker): 
 
--open your browser and pass http://localhost/me
+- Run the PHP project locally by copying the project folder to /var/html if you are using Linux or Mac or in c:/wamp OR c:/xamp if you are using windows 
+
+-open your browser and pass http://localhost/cv
 
 -and its done!
 
-Second Option (with docker) : 
+# Second Option (with docker) : 
 
+ *** DOCKER ***
 
-- RUN docker build --rm -f "Dockerfile" -t hamdirhibi-cv:latest "." 
+- RUN docker build --rm -f "Dockerfile" -t hamdi.rhibi:latest "." 
 
-- RUN docker run -d -it -p 8000:80/tcp -v your-path-folder:/usr/src/app  --name hamdirhibi-cv hamdirhibi-cv:latest
+- RUN docker run -d -it -p 8000:80/tcp -v your-folder-path:/usr/src/app  --name hamdi.rhibi hamdi.rhibi:latest
 
 - open your browser and pass http://localhost:8000/
 
-- EVERY THING is perfect now after applying some modification on code you have to commit your changes 
+- EVERY THING is perfect now after applying some modification in your code you have to commit your changes 
 
-- docker commit your-path-folder/
+- docker commit your-folder-path/
 
 - and its done!
 
 
-Third Option (create kubernetes cluster and run it ) : 
+# Deploy your portfolio in kubernetes Cluster  : 
 
-- Local test using minikube : 
+# RUN your kubernetes cluster locally:  
+  *** KUBERNETES ***
 
-- kubectl apply hamdirhibi-secret.yaml 
+- Create new namespace to separate virtually your portfolio project : kubectl create namespace cv-namespace
 
-- kubectl apply hamdirhibi-configmap.yaml 
+- to facilitate the task we will make the cv namespace the default namespace: kubectl config set-context --current --namespace=cv-namespace
 
-- kubectl apply hamdirhibi.yaml 
+- kubectl apply -f cv-secret.yaml 
 
-- Now you can access to your cv within the browser using the service because its work as a load balancer ( you can get your cluster ip address pas describing your service )
+- kubectl apply -f cv-configmap.yaml 
 
-- how to describe your service : kubectl describe service hamdirhibi-service 
+- kubectl apply -f cv.yaml 
+
+- got to http://localhost:30000
 
 - TIPS : To get more information about others component : kubectl describe (pod/deployment/service/secret/configmap) name-of-component
 
-- You can specify a domain Name to your cv rather than cluster ip adress , all you have to do is to add ingress type file and specify the host, and second step open terminal : sudo vim /etc/hosts and add line below localhost containing "your-cluster-ip your-domain name" example  : 192.168.64.5 hamdirhibi.com
+- You can specify the domain Name of your cv rather than cluster ip address (you have to change the type of your service from loadbalancer to cluster ), and apply the ingress file which will redirect the requests to your service : 
 
-- open new nav and pass your-domain-name.com 
 
-- BOMMMMMMM awesome !! 
+- kubectl apply -f cv-ingress.yaml 
 
-- new challenge ?  lets run prometheus and grafana locally using helm!! 
+
+- sudo vim /etc/hosts ( add line below localhost containing "your-cluster-ip your-domain name" example  : 192.168.64.5 cv.com )
+
+- Open new nav and pass your-domain-name.com 
+
+- BOMMMMMMM so smart xD  !! 
+
+- New challenge ?  lets run prometheus and Grafana locally using helm!! 
+
+ *** HELM PACKAGE MANGER***
 
 - RUN helm install prometheus stable/prometheus-operator
 
-- to access grafana you need to configure ingress to port forward the grafana service : RUN kubectl port-forward deployment/prometheus-grafana 3000
+- To access grafana you need to configure ingress to port forward to Grafana service : RUN kubectl port-forward deployment/prometheus-grafana 3000
 
-- go to localhost:3000 and login with (admin prom-operator)
+- Go to localhost:3000 and login using as login : "admin" and password : "prom-operator"
 
-- What do you think about grafana 
+- What do you think about Grafana xD  ? 
 
+# How to Create Azure kubernetes cluster and run your project in Prod Stage (Using CLI): 
 
-
-
-
-
-<div align="center">
-<img src="./assets/images/node_installation.png"  />
-</div> 
+ *** MICROSOFT AZURE ***
 
 
-- thats awesome ! lets move to the Front-end  config now ! 
+- First step you need to login to azure ( but you have install azure locally before : https://www.evernote.com/OutboundRedirect.action?dest=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fcli%2Fazure%2Finstall-azure-cli-apt)
+  
+- az login
 
-- cd DATA-LABELING-FRONT-END && npm install 
+- create resource group : az group create -g cvgrp --location=westus
 
--ng serve
+- create aks (2 nodes) : az aks create -g cvgrp --name=cv --node-vm-size=Standard_D1 --generate-ssh-keys
+
+
+# In case you wanna use azure container registry rather that docker hub 
+
+- create acr : az acr create -g cvgrp --location westus --name cvacr --sku Basic
+
+- second Allow AKS pull access to ACR : export CLIENT_ID=$(az aks show -g cvgrp -n cvacr — query “servicePrincipalProfile.clientId” — output tsv); echo $CLIENT_ID
+
+- export ACR_ID=$(az acr show -g cvgrp -n cvacr — query “id” — output tsv); echo $ACR_ID
+
+- az role assignment create — assignee $CLIENT_ID — role acrpull — scope $ACR_ID
+
+- now build you docker image locally (as we did in the first option) and push it in your acr 
+
+- tag the docker image and push it to registry
+
+- docker tag cv cvacr.azurecr.io/integration/cv:1.0
+
+- docker push vssubscriptionacr.azurecr.io/integration/fftoxml-service:1.0
+
+- thats it !! ==> moving to kube commands now 
+
+    *** KUBERNETES ***
+
+- First synchronize you kubectl with your aks 
+
+- az aks get-credentials -g cvgrp -n cv
+
+- Second construct your .yaml file and deploy them in order to aks cluster using 
+
+- kubectl apply -f cv-secret.yaml
+
+- kubectl apply -f cv-config-map.yaml
+
+- kubectl apply -f cv.yaml
+
+
+- No lets create a public access to your services 
+
+- verify which group you are: az aks show --resource-group cvgrp --name cv --query nodeResourceGroup -o tsv
+- will print ==> MC_cvgrp_cv_francecentral
+
+- create public ip address 
+
+- az network public-ip create --resource-group MC_cvgrp_cv_francecentral --name myAKSPublicIP --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
+
+- will print id address (ex : ***.***.***.****) 
+
+- pass this ip in your service.yaml like that : 
+
+apiVersion: v1
+kind : Service
+metadata:
+    name: cv-service
+    namespace: cv-namespace
+spec:
+    loadBalancerIP:  ***.***.***.****
+    type: LoadBalancer
+    selector:
+        app: cv
+    ports:
+        - protocol: TCP 
+          port : 80
+          targetPort : 80
+
+
+
+- SO long ? 
+
+- Finally we will install prometheus and grafana 
+
+- 
 
 <div align="center">
 <img src="./assets/images/angular_installation.png" />
@@ -146,12 +229,12 @@ that's it ? of course not , here you will find ec2 instance link    :
 you can use the test account to test app features  : 
 
 email : geekrhibi@gmail.com
-password: hamdirhibi
+password: cv
 
 
 ##  Contact Me
 
 don't hesitate to contact me if there any problem or suggestion :
 - e-mail : geekrhibi@gmail.com
-- linkedin : hamdirhibi
+- linkedin : cv
 - telegram : 3ezdine junior

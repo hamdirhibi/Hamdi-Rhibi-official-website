@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cv-configmap
+  namespace: cv-namespace 
+data:
+  database_url:  cv-service 

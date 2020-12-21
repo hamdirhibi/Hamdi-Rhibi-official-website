@@ -1,5 +1,5 @@
 <?php
-    $EMAIL = "codeinthedarktunisia@gmail.com" ; 
-    $PASSWORD = "gwgaekdcfyekszoo" ; 
+    $EMAIL = "your email " ; 
+    $PASSWORD = "your password " ; 
 
 ?>

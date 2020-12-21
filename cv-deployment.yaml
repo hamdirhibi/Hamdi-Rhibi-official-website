@@ -1,48 +1,49 @@
 apiVersion : apps/v1
 kind : Deployment
 metadata :
-    name: hamdirhibi-deployment
-    namespace: hamdirhibi-namespace
+    name: cv-deployment
+    namespace: cv-namespace
     labels :
-        app : hamdirhibi
+        app : cv
 spec:
     replicas : 1
     selector :
         matchLabels:
-            app: hamdirhibi
+            app: cv
     template:
         metadata:
             labels:
-                app: hamdirhibi
+                app: cv
         spec:
             containers:
-            -   name: hamdirhibi
-                image: hamdirhibi/hamdirhibi-cv:v1
+            -   name: cv
+                image: cv/cv-cv:v1
                 ports:
                 - containerPort : 80
                 env:
                 - name : EMAIL
                   valueFrom:
                     secretKeyRef:
-                        name: hamdirhibi-secret
+                        name: cv-secret
                         key: email
                 - name : PASSWORD
                   valueFrom:
                     secretKeyRef:
-                        name: hamdirhibi-secret
+                        name: cv-secret
                         key: password
 ---
 apiVersion: v1
 kind : Service
 metadata:
-    name: hamdirhibi-service
-    namespace: hamdirhibi-namespace
+    name: cv-service
+    namespace: cv-namespace
 spec:
-    loadBalancerIP: 20.74.9.72
-    type: LoadBalancer
+    #loadBalancerIP: YOU-AZURE-PUBLIC-IP-ADDRESS
+    # type: LoadBalancer
     selector:
-        app: hamdirhibi
+        app: cv
     ports:
         - protocol: TCP 
           port : 80
           targetPort : 80
+        #   nodePort : 30000 #IN CASE YOU WANNA RUN YOUR SERVICE AS LOAD BALANCER 
