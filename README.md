@@ -11,7 +11,7 @@
 
 
 <div align="center">
-<img src="./assets/images/home.png"  />
+<img src="./images/home.png"  />
 
 </div>
 
@@ -115,7 +115,13 @@
 
 - What do you think about Grafana xD  ? 
 
-# How to Create Azure kubernetes cluster and run your project in Prod Stage (Using CLI): 
+
+<div align="center">
+<img src="./images/grafana.png" />
+</div> 
+
+
+# How to Create Azure kubernetes Service  (Using CLI): 
 
  *** MICROSOFT AZURE ***
 
@@ -163,7 +169,6 @@
 
 - kubectl apply -f cv.yaml
 
-
 - No lets create a public access to your services 
 
 - verify which group you are: az aks show --resource-group cvgrp --name cv --query nodeResourceGroup -o tsv
@@ -177,64 +182,36 @@
 
 - pass this ip in your service.yaml like that : 
 
-apiVersion: v1
-kind : Service
-metadata:
-    name: cv-service
-    namespace: cv-namespace
-spec:
-    loadBalancerIP:  ***.***.***.****
-    type: LoadBalancer
-    selector:
-        app: cv
-    ports:
-        - protocol: TCP 
-          port : 80
-          targetPort : 80
+        apiVersion: v1
+        kind : Service
+        metadata:
+            name: cv-service
+            namespace: cv-namespace
+        spec:
+            loadBalancerIP:  ***.***.***.****
+            type: LoadBalancer
+            selector:
+                app: cv
+            ports:
+                - protocol: TCP 
+                port : 80
+                targetPort : 80
 
 
 
-- SO long ? 
+- Don't hesitate to leave a comments xD 
 
-- Finally we will install prometheus and grafana 
-
-- 
+- How to install promotheus and Grafana in AKS ? TO BE CONTINUE ... 
 
 <div align="center">
-<img src="./assets/images/angular_installation.png" />
+<img src="./images/aks.png" />
 </div> 
 
-
-- cd .. 
-
-- cd Rest-API-for-Dextr-Model-Deep-Extreme-Cut-Deep-Learning 
-
-- pip install -r requirements.txt
-
-- python main.py
-
-<div align="center">
-<img src="./assets/images/dextr_installation.png"  />
-</div> 
-
-
-Wow that's  super simple ? 
-
-
-## 🚀 Test It ? 
-
-that's it ? of course not , here you will find ec2 instance link    : 
-
-
-you can use the test account to test app features  : 
-
-email : geekrhibi@gmail.com
-password: cv
 
 
 ##  Contact Me
 
 don't hesitate to contact me if there any problem or suggestion :
 - e-mail : geekrhibi@gmail.com
-- linkedin : cv
+- linkedin : hamdirhibi
 - telegram : 3ezdine junior
