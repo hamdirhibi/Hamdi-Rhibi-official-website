@@ -22,6 +22,10 @@ class ComposerStaticInita5807cb3e4f038b28eea554310f8f2a1
             'Symfony\\Polyfill\\Intl\\Idn\\' => 26,
             'Symfony\\Polyfill\\Iconv\\' => 23,
         ),
+        'G' => 
+        array (
+            'GuzzleHttp\\Stream\\' => 18,
+        ),
         'E' => 
         array (
             'Egulias\\EmailValidator\\' => 23,
@@ -29,6 +33,10 @@ class ComposerStaticInita5807cb3e4f038b28eea554310f8f2a1
         'D' => 
         array (
             'Doctrine\\Common\\Lexer\\' => 22,
+        ),
+        'B' => 
+        array (
+            'Bexio\\PrometheusPHP\\' => 20,
         ),
     );
 
@@ -49,6 +57,10 @@ class ComposerStaticInita5807cb3e4f038b28eea554310f8f2a1
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-iconv',
         ),
+        'GuzzleHttp\\Stream\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/streams/src',
+        ),
         'Egulias\\EmailValidator\\' => 
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator',
@@ -56,6 +68,10 @@ class ComposerStaticInita5807cb3e4f038b28eea554310f8f2a1
         'Doctrine\\Common\\Lexer\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/lexer/lib/Doctrine/Common/Lexer',
+        ),
+        'Bexio\\PrometheusPHP\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bexiocom/prometheus_php/src',
         ),
     );
 

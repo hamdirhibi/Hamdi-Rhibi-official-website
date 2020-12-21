@@ -1,0 +1,48 @@
+apiVersion : apps/v1
+kind : Deployment
+metadata :
+    name: hamdirhibi-deployment
+    namespace: hamdirhibi-namespace
+    labels :
+        app : hamdirhibi
+spec:
+    replicas : 1
+    selector :
+        matchLabels:
+            app: hamdirhibi
+    template:
+        metadata:
+            labels:
+                app: hamdirhibi
+        spec:
+            containers:
+            -   name: hamdirhibi
+                image: hamdirhibi/hamdirhibi-cv:v1
+                ports:
+                - containerPort : 80
+                env:
+                - name : EMAIL
+                  valueFrom:
+                    secretKeyRef:
+                        name: hamdirhibi-secret
+                        key: email
+                - name : PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                        name: hamdirhibi-secret
+                        key: password
+---
+apiVersion: v1
+kind : Service
+metadata:
+    name: hamdirhibi-service
+    namespace: hamdirhibi-namespace
+spec:
+    loadBalancerIP: 20.74.9.72
+    type: LoadBalancer
+    selector:
+        app: hamdirhibi
+    ports:
+        - protocol: TCP 
+          port : 80
+          targetPort : 80

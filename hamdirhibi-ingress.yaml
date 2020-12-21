@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1beta1
+kind : Ingress
+metadata:
+  name: hamdirhibi-ingress
+  namespace: hamdirhibi-namespace 
+spec:
+  #defaultBackend:
+  #  resource:
+  #    apiGroup: k8s.example.com
+  #    kind: StorageBucket
+  #    name: static-assets
+  backend:
+    serviceName: hamdirhibi-service
+    servicePort: 80 
+  rules:
+  - host: hamdirhibi-cv.francecentral.cloudapp.azure.com
+    http: 
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          serviceName: hamdirhibi-service
+          servicePort: 80 
+       
