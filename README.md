@@ -7,7 +7,7 @@
 
 # 📋 Introduction   
 
-<p> Today im glad to share with you my latest experience with kubernetes and docker , Among this tuto we will going from a simple php portfolio project to a kubernetes cluster deployed in Microsoft Azure, during this workshop we will details the follow points :</p>
+<p> Today im glad to share with you my latest experience with kubernetes and docker , Among this tuto we will going from a simple php portfolio project to a kubernetes cluster deployed in Microsoft Azure, during this workshop we will discuss the following points :</p>
 
 - Creating a portfolio project using PHP
 - Generating docker image for our project 
