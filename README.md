@@ -9,8 +9,8 @@
 
 <p> Today im glad to share with you my latest experience with kubernetes and docker , Among this tuto we will going from a simple php portfolio project to a kubernetes cluster deployed in Microsoft Azure, during this workshop we will details the follow points :</p>
 
-- Creating a portfolio project 
-- Generating docker image for it 
+- Creating a portfolio project using PHP
+- Generating docker image for our project 
 - Create A local kubernetes Cluster 
 - Install Prometheus and grafana locally using HELM
 - Create azure container registry and push our docker inside it  
@@ -88,7 +88,7 @@
 
 - Create new namespace to separate virtually your portfolio project : kubectl create namespace cv-namespace
 
-- to facilitate the task we will make the cv namespace the default namespace: kubectl config set-context --current --namespace=cv-namespace
+- to facilitate the task we will make the cv namespace as default namespace: kubectl config set-context --current --namespace=cv-namespace
 
 - kubectl apply -f cv-secret.yaml 
 
