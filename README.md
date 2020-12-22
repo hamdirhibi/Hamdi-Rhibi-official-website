@@ -13,9 +13,9 @@
 - Generating docker image for our project 
 - Create A local kubernetes Cluster 
 - Install Prometheus and grafana locally using HELM
-- Create azure container registry and push our docker inside it  
+- Create azure container registry and push our docker image inside it  
 - Create Azure Kubernetes service 
-- deploy our application to the AKS 
+- deploy our application to AKS 
 - Configure many Kubernetes components such as (deployment,service,ingress,secret file,config_map) 
 
 
