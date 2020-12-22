@@ -51,9 +51,9 @@
 
 - Run the PHP project locally by copying the project folder to /var/html if you are using Linux or Mac or in c:/wamp OR c:/xamp if you are using windows 
 
--open your browser and pass http://localhost/cv
+- Open your browser and pass http://localhost/cv
 
--and its done!
+- And its done!
 
 # Second Option (with docker) : 
 
@@ -87,7 +87,7 @@
 
 - kubectl apply -f cv.yaml 
 
-- got to http://localhost:30000
+- Got to http://localhost:30000
 
 - TIPS : To get more information about others component : kubectl describe (pod/deployment/service/secret/configmap) name-of-component
 
@@ -97,7 +97,7 @@
 - kubectl apply -f cv-ingress.yaml 
 
 
-- sudo vim /etc/hosts ( add line below localhost containing "your-cluster-ip your-domain name" example  : 192.168.64.5 cv.com )
+- Sudo vim /etc/hosts ( add line below localhost containing "your-cluster-ip your-domain name" example  : 192.168.64.5 cv.com )
 
 - Open new nav and pass your-domain-name.com 
 
@@ -135,7 +135,7 @@
 - create aks (2 nodes) : az aks create -g cvgrp --name=cv --node-vm-size=Standard_D1 --generate-ssh-keys
 
 
-# In case you wanna use azure container registry rather that docker hub 
+# In case you wanna use azure container registry rather then docker hub 
 
 - create acr : az acr create -g cvgrp --location westus --name cvacr --sku Basic
 
