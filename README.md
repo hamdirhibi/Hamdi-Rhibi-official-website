@@ -5,7 +5,7 @@
 </a>
 </h1>
 
-# 📋 Introduction 
+# 📋 Introduction   
 
 <p> Today im glad to share with you my latest experience with kubernetes and docker , Among this tuto we will going from a simple php portfolio project to a kubernetes cluster deployed in Microsoft Azure, during this workshop we will details the follow points :</p>
 
@@ -81,7 +81,7 @@
 - and its done!
 
 
-# Deploy your portfolio in kubernetes Cluster  : 
+# Deploy your portfolio inside kubernetes Cluster  : 
 
 # RUN your kubernetes cluster locally:  
   *** KUBERNETES ***
@@ -144,7 +144,7 @@
 - create aks (2 nodes) : az aks create -g cvgrp --name=cv --node-vm-size=Standard_D1 --generate-ssh-keys
 
 
-# In case you wanna use azure container registry rather then docker hub 
+# How to use azure container registry rather then docker hub 
 
 - create acr : az acr create -g cvgrp --location westus --name cvacr --sku Basic
 
