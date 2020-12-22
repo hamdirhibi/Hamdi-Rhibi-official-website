@@ -7,7 +7,16 @@
 
 # 📋 Introduction 
 
-<p> as part of the cloud project validation i create this Portfolio web page including, as following you will find each the description of each step to built this work including every command used, So bring your cafee and get ready for the show !!   </p>
+<p> Today im glad to share with you my latest experience with kubernetes and docker , Among this tuto we will going from a simple php portfolio project to a kubernetes cluster deployed in Microsoft Azure, during this workshop we will details the follow points :</p>
+
+- Creating a portfolio project 
+- Generating docker image for it 
+- Create A local kubernetes Cluster 
+- Install Prometheus and grafana locally using HELM
+- Create azure container registry and push our docker inside it  
+- Create Azure Kubernetes service 
+- deploy our application to the AKS 
+- Configure many Kubernetes components such as (deployment,service,ingress,secret file,config_map) 
 
 
 <div align="center">
@@ -208,6 +217,16 @@
 </div> 
 
 
+
+
+##  What is Next ? 
+
+
+- Configure prometheus to get alerts in a various tool like slack and others and receiving message  
+- Managing envirement variables inside our cluster  
+- Creating new application and applying communication between them inside our kubernetes cluster
+- Generating full CI/CD using jenkins , terraform and ansible . 
+ ***Stay tuned ...***  
 
 ##  Contact Me
 
