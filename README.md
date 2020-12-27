@@ -85,6 +85,7 @@
 
 # RUN your kubernetes cluster locally:  
   *** KUBERNETES ***
+- cd kubernetes/
 
 - Create new namespace to separate virtually your portfolio project : kubectl create namespace cv-namespace
 
