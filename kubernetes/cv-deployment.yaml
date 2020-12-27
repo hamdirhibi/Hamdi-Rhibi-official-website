@@ -17,7 +17,7 @@ spec:
         spec:
             containers:
             -   name: cv
-                image: cv/cv-cv:v1
+                image: hamdirhibi/hamdirhibi-cv:v1
                 ports:
                 - containerPort : 80
                 env:
@@ -39,11 +39,11 @@ metadata:
     namespace: cv-namespace
 spec:
     #loadBalancerIP: YOU-AZURE-PUBLIC-IP-ADDRESS
-    # type: LoadBalancer
+    type: LoadBalancer
     selector:
         app: cv
     ports:
         - protocol: TCP 
           port : 80
           targetPort : 80
-        #   nodePort : 30000 #IN CASE YOU WANNA RUN YOUR SERVICE AS LOAD BALANCER 
+          nodePort : 30000 #IN CASE YOU WANNA RUN YOUR SERVICE AS LOAD BALANCER 
