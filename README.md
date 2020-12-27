@@ -5,17 +5,17 @@
 </a>
 </h1>
 
-# 📋 Introduction 
+# 📋 Introduction   
 
-<p> Today im glad to share with you my latest experience with kubernetes and docker , Among this tuto we will going from a simple php portfolio project to a kubernetes cluster deployed in Microsoft Azure, during this workshop we will details the follow points :</p>
+<p> Today im glad to share with you my latest experience with kubernetes and docker , Among this tuto we will going from a simple php portfolio project to a kubernetes cluster deployed in Microsoft Azure, during this workshop we will discuss the following points :</p>
 
 - Creating a portfolio project using PHP
 - Generating docker image for our project 
 - Create A local kubernetes Cluster 
 - Install Prometheus and grafana locally using HELM
-- Create azure container registry and push our docker inside it  
+- Create azure container registry and push our docker image inside it  
 - Create Azure Kubernetes service 
-- deploy our application to the AKS 
+- deploy our application to AKS 
 - Configure many Kubernetes components such as (deployment,service,ingress,secret file,config_map) 
 
 
@@ -81,7 +81,7 @@
 - and its done!
 
 
-# Deploy your portfolio in kubernetes Cluster  : 
+# Deploy your portfolio inside kubernetes Cluster  : 
 
 # RUN your kubernetes cluster locally:  
   *** KUBERNETES ***
@@ -145,7 +145,7 @@
 - create aks (2 nodes) : az aks create -g cvgrp --name=cv --node-vm-size=Standard_D1 --generate-ssh-keys
 
 
-# In case you wanna use azure container registry rather then docker hub 
+# How to use azure container registry rather then docker hub 
 
 - create acr : az acr create -g cvgrp --location westus --name cvacr --sku Basic
 
